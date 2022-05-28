@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery.js"></script>
+    <script src="client.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <title> To do App</title>
+</head>
+<body>
+    <h1>Andrew's todo app</h1>
+    <form>
+        <input id="to-do" type="text" placeholder="Things todo">
+        <button id="submit-btn">Add to list</button>
+    </form>
+    <h2> To do list </h2>
+    <table>
+        <thead>
+          <tr>
+            <th>Task</th>
+            <th>Complete</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+            <td> Do the dishes</td>
+            <td>
+
+                <button id="mark-as-done">Mark as done</button>
+                <!-- <select id="is-complete" name="complete">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select> -->
+            </td>
+            <td> Make sure to hand dry</td>
+            <td><button id="delete-btn"> Remove </button></td>
+        </tbody>
+      </table>
+</body>
+</html>
