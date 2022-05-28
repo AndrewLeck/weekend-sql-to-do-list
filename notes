@@ -1,0 +1,29 @@
+                BASE Mode 
+
+Front End 
+
+[] Allow users to create a task
+[] When task is created, store it in database SQL
+[] When the task is creted it should show all task that need to be done
+[] Each task should have the option to mark complete or delete it
+[] When a task is complete the visual representation should change
+    [] The background of containter could change from grey to green
+    [] The comnplete option should be checked off
+[] Whether or not a task is complete should be stored in the database
+[] Deleting a task should remove it from the web page and database
+
+CSS Styling Base mode
+
+[] Change the background color
+[] Change font family and size
+[] Text color and backgroud color of task (to show of done or not)
+
+Database set up
+
+[] Create a database named "weekend-to-do-app"
+[] Create a database.sql text file in repo
+    [] Include 'CREAT TABLE' queries
+
+
+Stretch Goals
+ will take on if i have time...
