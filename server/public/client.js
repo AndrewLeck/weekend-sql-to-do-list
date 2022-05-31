@@ -1,6 +1,5 @@
 console.log('hello world');
 $(document).ready(readyNow);
-// $('#submit-btn').on('click', sendToServer());
 
 function readyNow(){
  console.log('JQ LOADED');
@@ -8,7 +7,7 @@ function readyNow(){
  $('#header').on('click','#submit-btn', sendToServer);
  $('#view-todo-list').on('click','#delete-btn', deleteItem );
  $('#view-todo-list').on('click','#mark-as-done', markItemAsDone );
-
+ $('#view-todo-list').on('click','#mark-as-done', changeColor );
 };
 
 
@@ -90,6 +89,8 @@ function getToDoList(){
       let listId = $(this).parents('tr').data('todo-id');
       console.log(' The thing I want to channge is', listId);
 
+    //   $(this).parents('tr').addClass('lightgreen');
+
       let updateList;
 
       if($(this).parents('tr').children('.completeStatus').text() === 'No') {
@@ -114,9 +115,15 @@ function getToDoList(){
     })
     .then(res => {
         console.log('PUT was successful!')
+        changeColor();
         getToDoList();
+        
     })
     .catch(err => {
         console.log('PUT failed', err);
     });
   };
+
+  function changeColor(){
+      $(this).parents('tr').addClass('lightgreen');
+  }

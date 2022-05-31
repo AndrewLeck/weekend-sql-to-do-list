@@ -1,8 +1,22 @@
 body{
     background-color: bisque;
+    font-family: fantasy;
 
 }
 
-/* h1{
-    text-align: center;
-} */
+h1{
+ font-family: fantasy;
+}
+
+/* .checkMark {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: var(--height);
+    width: var(--width);
+    border-bottom: var(--borderWidth) solid var(--borderColor);
+    border-right: var(--borderWidth) solid var(--borderColor);
+  } */
+
+  .lightgreen{
+      background-color: lightgreen;
+  }
