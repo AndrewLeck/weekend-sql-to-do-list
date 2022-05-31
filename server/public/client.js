@@ -7,7 +7,7 @@ function readyNow(){
  $('#header').on('click','#submit-btn', sendToServer);
  $('#view-todo-list').on('click','#delete-btn', deleteItem );
  $('#view-todo-list').on('click','#mark-as-done', markItemAsDone );
- $('#view-todo-list').on('click','#mark-as-done', changeColor );
+//  $('#view-todo-list').on('click','#mark-as-done', changeColor );
 };
 
 
@@ -115,7 +115,6 @@ function getToDoList(){
     })
     .then(res => {
         console.log('PUT was successful!')
-        changeColor();
         getToDoList();
         
     })
@@ -124,7 +123,7 @@ function getToDoList(){
     });
   };
 
-  function changeColor(){
-      $(this).parents('tr').addClass('lightgreen');
-      $(this).append('.lightgreen');
-  }
+  // function changeColor(){
+  //     $(this).parents('tr').addClass('lightgreen');
+  //     $(this).append('.lightgreen');
+  // }
