@@ -7,7 +7,8 @@ function readyNow(){
  getToDoList();
  $('#header').on('click','#submit-btn', sendToServer);
  $('#view-todo-list').on('click','#delete-btn', deleteItem );
-//  $('#to-do').on('click', '#submit-btn', sendToServer());
+ $('#view-todo-list').on('click','#mark-as-done', markItemAsDone );
+
 };
 
 
@@ -25,7 +26,7 @@ function getToDoList(){
         $('#view-todo-list').append(`
         <tr data-todo-id= "${item.id}">
           <td>${item.task}</td>
-          <td>${item.complete}</td>
+          <td class="completeStatus">${item.complete}</td>
           <td>
             <button id="mark-as-done">Mark as done</button>
           </td>
@@ -81,5 +82,41 @@ function getToDoList(){
     })
     .catch((err) => {
         console.log('Failed to delete in client.js', err);
+    });
+  };
+
+  function markItemAsDone(){
+      console.log('In mark item as done function');
+      let listId = $(this).parents('tr').data('todo-id');
+      console.log(' The thing I want to channge is', listId);
+
+      let updateList;
+
+      if($(this).parents('tr').children('.completeStatus').text() === 'No') {
+        updateList = {
+          complete: 'Yes'
+        };
+      }
+      else if($(this).parents('tr').children('.completeStatus').text() === 'Yes') {
+        updateList = {
+          complete: 'No'
+        };
+      }
+      else {
+        console.log('Somthing went wrong in Mark Item as Done')
+      };
+
+      console.log('Updating my list to', updateList);
+    $.ajax({
+        method: 'PUT',
+        url:`/todo/${listId}`,
+        data: updateList
+    })
+    .then(res => {
+        console.log('PUT was successful!')
+        getToDoList();
+    })
+    .catch(err => {
+        console.log('PUT failed', err);
     });
   };
