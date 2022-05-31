@@ -126,4 +126,5 @@ function getToDoList(){
 
   function changeColor(){
       $(this).parents('tr').addClass('lightgreen');
+      $(this).append('.lightgreen');
   }
