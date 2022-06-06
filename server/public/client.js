@@ -4,10 +4,10 @@ $(document).ready(readyNow);
 function readyNow(){
  console.log('JQ LOADED');
  getToDoList();
- $('#header').on('click','#submit-btn', sendToServer);
+ $(document).on('click','#submit-btn', sendToServer);
  $('#view-todo-list').on('click','#delete-btn', deleteItem );
  $('#view-todo-list').on('click','#mark-as-done', markItemAsDone );
-//  $('#view-todo-list').on('click','#mark-as-done', changeColor );
+//  $(document).on('click','#mark-as-done', changeColor );
 };
 
 
@@ -58,7 +58,7 @@ function getToDoList(){
       })
       .then((response) => {
         console.log('POST Sucsessful', response);
-        getToDoList
+        getToDoList();
       })
       .catch((err) => {
           console.log('Error Post failed', err)
@@ -84,11 +84,12 @@ function getToDoList(){
     });
   };
 
-  function markItemAsDone(){
+  function markItemAsDone(event){
+    event.preventDefault();
       console.log('In mark item as done function');
       let listId = $(this).parents('tr').data('todo-id');
       console.log(' The thing I want to channge is', listId);
-
+     
     //   $(this).parents('tr').addClass('lightgreen');
 
       let updateList;
@@ -97,6 +98,7 @@ function getToDoList(){
         updateList = {
           complete: 'Yes'
         };
+        $(this).parents('tr').addClass('lightgreen');
       }
       else if($(this).parents('tr').children('.completeStatus').text() === 'Yes') {
         updateList = {
@@ -115,8 +117,7 @@ function getToDoList(){
     })
     .then(res => {
         console.log('PUT was successful!')
-        getToDoList();
-        
+        getToDoList(); 
     })
     .catch(err => {
         console.log('PUT failed', err);
@@ -125,5 +126,6 @@ function getToDoList(){
 
   // function changeColor(){
   //     $(this).parents('tr').addClass('lightgreen');
-  //     $(this).append('.lightgreen');
+  //     console.log('in changeColor')
+  //     // $(this).append('.lightgreen');
   // }
